@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct LoginView: View {
-    var user: String = "" // Think about modifier
-    var password: String = "" // Think about modifier
-    var isOnLoginPage: Bool = true // Think about modifier
-    var viewModel = LoginViewModel() // Think about modifier
+    @State var user: String = "" // Think about modifier
+    @State var password: String = "" // Think about modifier
+    @State var isOnLoginPage: Bool = true // Think about modifier
+    @ObservedObject var viewModel = LoginViewModel() // Think about modifier
     
     var body: some View {
         Group {

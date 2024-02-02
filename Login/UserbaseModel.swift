@@ -16,13 +16,16 @@ struct Accounts {
     // This function should add the username and password into a new User object and then add that to the userList.
     // Remember to check whether the user already exists.
     mutating func register(username: String, password: String) {
-        // FILL IN THIS FUNCTION
+        let newUser = User(username: username, password: password)
+        if !has(newUser) {
+            userList.append(newUser)
+        }
     }
     
     // This function should check if the user passed in has a valid username and a valid password.
     // This means that a user exists in the userList who has the correct username and password
     func isValidUser(_ user: User) -> Bool {
-        return false
+        userList.contains(where: { $0.id == user.id && $0.password == user.password })
     }
     
     // This function checks whether the userList contains a given user.

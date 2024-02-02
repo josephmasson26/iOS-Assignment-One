@@ -8,17 +8,20 @@
 import Foundation
 
 class LoginViewModel : ObservableObject {
-    var accounts: Accounts = Accounts() // Think about the modifier here
-    var currentUser: Accounts.User? // Think about the modifier here
+     private var accounts: Accounts = Accounts() // Think about the modifier here
+        var currentUser: Accounts.User? // Think about the modifier here
     
     // This uses the Model Accounts and adds a user to it
     func addUser(username: String, password: String) {
-        // FILL IN THIS FUNCTION
+        accounts.register(username: username, password: password)
     }
     
     // This signs in a user, meaning that it needs to check if the user is correct and then set the currentUser to that user
     func signInUser(username: String, password: String) {
-        // FILL IN THIS FUNCTION
+        let user = Accounts.User(username: username, password: password)
+        if accounts.isValidUser(user) {
+            currentUser = user
+        }
     }
     
     func signOut() {
