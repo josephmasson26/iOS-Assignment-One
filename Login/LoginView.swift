@@ -21,22 +21,42 @@ struct LoginView: View {
                 signedInPage
             }
         }
-        .onChange(of: viewModel.currentUser) { currentUser in
-            isOnLoginPage = (currentUser == nil)
+        .onChange(of: viewModel.currentUser) {
+            isOnLoginPage = (viewModel.currentUser == nil)
         }
+        .background(Color.gray.opacity(0.2))
     }
     
     var loginPage: some View {
-        // This is what should show when on login page
-        // FILL THIS IN
-        EmptyView()
+        VStack(alignment: .center, spacing: 20){
+            Text("Log In With Your Username and Password")
+            TextField("Username", text: $user).padding()
+            SecureField("Password", text: $password).padding()
+            
+            Button("Sign In") {
+                viewModel.signInUser(username: user, password: password)
+                
+            }.padding()
+            
+            Button("Sign Up") {
+                viewModel.addUser(username: user, password: password)
+            }.padding()
+        }
+        
     }
     
     var signedInPage: some View {
         // This is what should show when logged in
         // make sure to show the user and password of the current User here, not the user and password which were typed in the text field
         // FILL THIS IN
-        EmptyView()
+        VStack {
+            Text("\(user)")
+            Text("\(password)")
+            
+            Button("Back To Login Page") {
+                viewModel.signOut()
+            }
+        }
     }
 }
 
