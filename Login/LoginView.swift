@@ -21,8 +21,8 @@ struct LoginView: View {
                 signedInPage
             }
         }
-        .onChange(of: viewModel.currentUser) { currentUser in
-            isOnLoginPage = (currentUser == nil)
+        .onChange(of: viewModel.currentUser) {
+            isOnLoginPage = (viewModel.currentUser == nil)
         }
     }
     
