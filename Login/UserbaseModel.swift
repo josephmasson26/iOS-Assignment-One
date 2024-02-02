@@ -22,7 +22,6 @@ struct Accounts {
     // This function should check if the user passed in has a valid username and a valid password.
     // This means that a user exists in the userList who has the correct username and password
     func isValidUser(_ user: User) -> Bool {
-        // FILL IN THIS FUNCTION (This is similar to the "has" function function)
         return false
     }
     
