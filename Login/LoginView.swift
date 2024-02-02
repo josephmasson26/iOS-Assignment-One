@@ -24,23 +24,25 @@ struct LoginView: View {
         .onChange(of: viewModel.currentUser) {
             isOnLoginPage = (viewModel.currentUser == nil)
         }
+        .background(Color.gray.opacity(0.2))
     }
     
     var loginPage: some View {
-        VStack{
+        VStack(alignment: .center, spacing: 20){
             Text("Log In With Your Username and Password")
-            TextField("Username", text: $user)
-            SecureField("Password", text: $password)
+            TextField("Username", text: $user).padding()
+            SecureField("Password", text: $password).padding()
             
             Button("Sign In") {
                 viewModel.signInUser(username: user, password: password)
                 
-            }
+            }.padding()
             
             Button("Sign Up") {
                 viewModel.addUser(username: user, password: password)
-            }
+            }.padding()
         }
+        
     }
     
     var signedInPage: some View {
